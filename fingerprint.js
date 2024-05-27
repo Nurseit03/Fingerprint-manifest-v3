@@ -35,13 +35,13 @@ captureBtn.addEventListener("click", async () => {
     deviceSeq,
   };
 
-  await sendCaptureRequest(BASE_URL + captureUrl, format).then((data) => {
+  await sendRequest(BASE_URL + captureUrl, "POST", format).then((data) => {
     captureBtn.innerHTML = "Сканировать";
   });
 });
 
 async function loadDevices() {
-  await sendRequest(BASE_URL + deviceUrl).then((data) => {
+  await sendRequest(BASE_URL + deviceUrl, "GET").then((data) => {
     deviceSelect.innerHTML = "";
     data.forEach((deviceData) => {
       const option = document.createElement("option");
@@ -69,22 +69,24 @@ async function sendRequest(url) {
   }
 }
 
-async function sendCaptureRequest(url, body) {
+async function sendRequest(url, method, body = null) {
   try {
-    const response = await fetch(url, {
-      method: "POST",
+    const options = {
+      method: method,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(body),
-    });
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+    };
+
+    if (body) {
+      options.body = JSON.stringify(body);
     }
-    const result = await response.json();
-    console.log("Result:", result);
-    return result;
+
+    const response = await fetch(url, options);
+    if (!response.ok) throw new Error("Network response was not ok");
+    return await response.json();
   } catch (error) {
     console.error("There was a problem with your fetch operation:", error);
+    throw error;
   }
 }
