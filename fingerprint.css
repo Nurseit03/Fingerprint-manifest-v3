@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 200px;
+  background-color: #f0f0f0;
+}
+
+.container {
+  padding: 8px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.hidden {
+  display: none;
+}
+
+.content, .content__buttons{
+  width: 100%;
+  gap: 8px;
+}
+
+.content__buttons button {
+  width: 100%;
+  padding: 8px;
+  background-color: rgb(27, 170, 117); 
+  color: white; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.content__buttons button:hover {
+  background-color: rgb(31, 160, 113);
+}
+
+#finger_logo {
+  width: 84px;
+  height: 84px;
+  border-radius: 100%;
+  margin: 8px 8px;
+}
+
+.pulse {
+  animation: pulse-animation 1.6s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 11px rgba(27, 170, 117, 0.1);
+  }
+}
+
+.loader {
+  border: 4px solid #f3f3f3; /* Серый круг */
+  border-top: 4px solid #3498db; /* Синий круг */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite; /* Анимация вращения */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

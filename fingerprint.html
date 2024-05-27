@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finger Print</title>
+    <link rel="stylesheet" type="text/css" href="fingerprint.css" />
+  </head>
+  <body id="fingerPageBody">
+    <div class="container">
+      <div class="content center column">
+        <img id="finger_logo" class="pulse" src="/icons/128.png" alt="#">
+        <div class="content__buttons column">
+          Найденные устройства:
+          <select id="deviceSelect"></select> 
+          Формат:
+          <select id="formatSelect">
+            <option value="iso">ISO</option>
+            <option value="ansi">ANSI</option>
+          </select>
+          <button id="captureBtn" class="center">Сканировать</button>
+        </div>
+      </div>
+    </div>
+    <script src="./fingerprint.js"></script>
+  </body>
+</html>
